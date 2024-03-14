@@ -6,20 +6,15 @@ import { Subject } from 'rxjs';
 
 @Injectable()
 export class RecipeService {
-  image =
-    'https://t3.ftcdn.net/jpg/04/28/66/58/240_F_428665823_eVnQawJvCREXknWgvaEV8KXEQqk4Wlr1.jpg';
-  private recipes: Recipe[] = [
-    new Recipe('A Test REcipe Number 1', 'This is a test', this.image, [
-      new Ingredient('carrots', 4),
-      new Ingredient('onions', 2),
-    ]),
-    new Recipe('A Test REcipe number 2', 'This is a test', this.image, [
-      new Ingredient('noodles', 4),
-      new Ingredient('beef', 2),
-    ]),
-  ];
+  private recipes: Recipe[] = [];
   recipesChanged = new Subject<Recipe[]>();
   constructor(private slService: ShoppingListService) {}
+
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesChanged.next([...this.recipes]);
+  }
+
   getRecipes() {
     return [...this.recipes];
   }
