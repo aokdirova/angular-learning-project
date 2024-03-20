@@ -34,7 +34,6 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RecipesModule,
     ShoppingListModule,
   ],
   providers: [
